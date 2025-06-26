@@ -5,6 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KcKonzept 🧠 Werbeagentur</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            animation: {
+              fadeInUp: 'fadeInUp 0.8s ease-out both',
+              fadeIn: 'fadeIn 1s ease-in both'
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              }
+            },
+          },
+        },
+      }
+    </script>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap');
       body {
@@ -19,28 +41,28 @@
   <body class="bg-white text-gray-900">
     <!-- Hero -->
     <section class="min-h-screen flex flex-col justify-center items-center text-center p-6 bg-gradient-to-br from-blue-200 to-teal-100">
-      <img src="images/logo.png" alt="KcKonzept Logo" class="w-28 md:w-40 mb-6" />
-      <h1 class="text-4xl md:text-6xl font-bold">Kreativ. Konsequent. KcKonzept.</h1>
-      <p class="mt-4 text-lg md:text-xl max-w-xl">
+      <img src="images/logo.png" alt="KcKonzept Logo" class="w-28 md:w-40 mb-6 animate-fadeIn" />
+      <h1 class="text-4xl md:text-6xl font-bold animate-fadeInUp">Kreativ. Konsequent. KcKonzept.</h1>
+      <p class="mt-4 text-lg md:text-xl max-w-xl animate-fadeInUp delay-150">
         Deine Werbeagentur für durchdachtes Design, innovative Technologien und mutige Ideen.
       </p>
-      <img src="images/hero-illustration.jpg" alt="Kreatives Arbeiten" class="mt-8 w-full max-w-md rounded-xl shadow-lg" />
+      <img src="images/hero-illustration.jpg" alt="Kreatives Arbeiten" class="mt-8 w-full max-w-md rounded-xl shadow-lg animate-fadeInUp delay-200" />
     </section>
 
     <!-- Über den Gründer -->
     <section class="p-6 md:p-16 bg-white text-center">
-      <h2 class="text-3xl font-bold mb-4">Der Kopf hinter KcKonzept</h2>
-      <p class="max-w-2xl mx-auto text-lg">
+      <h2 class="text-3xl font-bold mb-4 animate-fadeInUp">Der Kopf hinter KcKonzept</h2>
+      <p class="max-w-2xl mx-auto text-lg animate-fadeIn delay-150">
         Hinter KcKonzept steht ein Macher mit Vision. Als CEO bringt er über ein Jahrzehnt Erfahrung aus diversen Design-, Werbe- und Digitalprojekten mit. Seine Stärke: Konzepte, die nicht nur kreativ aussehen, sondern auch wirken. Jetzt bringt er all diese Erfahrung in eine neue, mutige Agentur: KcKonzept.
       </p>
-      <img src="images/ceo.jpg" alt="CEO" class="mt-6 w-full max-w-md mx-auto rounded-xl shadow-md" />
+      <img src="images/ceo.jpg" alt="CEO" class="mt-6 w-full max-w-md mx-auto rounded-xl shadow-md animate-fadeInUp delay-300" />
     </section>
 
     <!-- Leistungen -->
     <section class="p-6 md:p-16 bg-gray-100 text-center">
-      <h2 class="text-4xl font-bold mb-10">Unsere Leistungen</h2>
+      <h2 class="text-4xl font-bold mb-10 animate-fadeInUp">Unsere Leistungen</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer text-center" onclick="toggleDetails(this)">
+        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer text-center animate-fadeInUp" onclick="toggleDetails(this)">
           <h3 class="text-2xl font-semibold">Branding & Markenentwicklung</h3>
           <div class="transition-max-height max-h-0 mt-4">
             <ul class="text-left text-sm list-disc list-inside">
@@ -50,7 +72,7 @@
             </ul>
           </div>
         </div>
-        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer text-center" onclick="toggleDetails(this)">
+        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer text-center animate-fadeInUp delay-100" onclick="toggleDetails(this)">
           <h3 class="text-2xl font-semibold">Printdesign & Druck</h3>
           <div class="transition-max-height max-h-0 mt-4">
             <ul class="text-left text-sm list-disc list-inside">
@@ -60,7 +82,7 @@
             </ul>
           </div>
         </div>
-        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer text-center" onclick="toggleDetails(this)">
+        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer text-center animate-fadeInUp delay-200" onclick="toggleDetails(this)">
           <h3 class="text-2xl font-semibold">Social Media & Content</h3>
           <div class="transition-max-height max-h-0 mt-4">
             <ul class="text-left text-sm list-disc list-inside">
@@ -70,7 +92,7 @@
             </ul>
           </div>
         </div>
-        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer text-center" onclick="toggleDetails(this)">
+        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer text-center animate-fadeInUp delay-300" onclick="toggleDetails(this)">
           <h3 class="text-2xl font-semibold">KI & Automatisierung</h3>
           <div class="transition-max-height max-h-0 mt-4">
             <ul class="text-left text-sm list-disc list-inside">
@@ -85,9 +107,9 @@
 
     <!-- Kontaktbereich -->
     <section class="p-6 md:p-16 bg-white text-center">
-      <h2 class="text-3xl font-bold mb-6">Lass uns reden</h2>
-      <p class="text-lg max-w-xl mx-auto mb-8">Du hast ein Projekt im Kopf oder willst einfach mehr erfahren? Schreib uns oder schick direkt eine Nachricht!</p>
-      <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <h2 class="text-3xl font-bold mb-6 animate-fadeInUp">Lass uns reden</h2>
+      <p class="text-lg max-w-xl mx-auto mb-8 animate-fadeIn delay-100">Du hast ein Projekt im Kopf oder willst einfach mehr erfahren? Schreib uns oder schick direkt eine Nachricht!</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fadeIn delay-200">
         <a href="mailto:kckonzept.agentur@gmail.com" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full text-lg transition">📧 E-Mail schreiben</a>
         <a href="https://wa.me/4917631317251" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full text-lg transition">💬 WhatsApp starten</a>
       </div>
