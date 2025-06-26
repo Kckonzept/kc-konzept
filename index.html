@@ -5,8 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KcKonzept 🧠 Werbeagentur</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap');
+      body {
+        font-family: 'Outfit', sans-serif;
+      }
+      .transition-max-height {
+        transition: max-height 0.4s ease-in-out;
+        overflow: hidden;
+      }
+    </style>
   </head>
-  <body class="bg-white text-gray-900 font-sans">
+  <body class="bg-white text-gray-900">
     <!-- Hero -->
     <section class="min-h-screen flex flex-col justify-center items-center text-center p-6 bg-gradient-to-br from-blue-200 to-teal-100">
       <img src="images/logo.png" alt="KcKonzept Logo" class="w-28 md:w-40 mb-6" />
@@ -28,39 +38,47 @@
 
     <!-- Leistungen -->
     <section class="p-6 md:p-16 bg-gray-100 text-center">
-      <h2 class="text-3xl font-bold mb-6">Unsere Leistungen</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg max-w-4xl mx-auto">
-        <div class="bg-white rounded-xl p-6 shadow hover:shadow-md transition cursor-pointer" onclick="toggleDetails(this)">
-          <h3 class="font-semibold text-xl">Branding & Markenentwicklung</h3>
-          <ul class="mt-2 hidden text-left text-sm list-disc list-inside">
-            <li>Markenstrategie</li>
-            <li>Logoentwicklung</li>
-            <li>Design-Guidelines</li>
-          </ul>
+      <h2 class="text-4xl font-bold mb-10">Unsere Leistungen</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer text-center" onclick="toggleDetails(this)">
+          <h3 class="text-2xl font-semibold">Branding & Markenentwicklung</h3>
+          <div class="transition-max-height max-h-0 mt-4">
+            <ul class="text-left text-sm list-disc list-inside">
+              <li>Markenstrategie</li>
+              <li>Logoentwicklung</li>
+              <li>Design-Guidelines</li>
+            </ul>
+          </div>
         </div>
-        <div class="bg-white rounded-xl p-6 shadow hover:shadow-md transition cursor-pointer" onclick="toggleDetails(this)">
-          <h3 class="font-semibold text-xl">Printdesign & Druck</h3>
-          <ul class="mt-2 hidden text-left text-sm list-disc list-inside">
-            <li>Flyer, Broschüren, Plakate</li>
-            <li>Visitenkarten & Briefpapier</li>
-            <li>Druckabwicklung</li>
-          </ul>
+        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer text-center" onclick="toggleDetails(this)">
+          <h3 class="text-2xl font-semibold">Printdesign & Druck</h3>
+          <div class="transition-max-height max-h-0 mt-4">
+            <ul class="text-left text-sm list-disc list-inside">
+              <li>Flyer, Broschüren, Plakate</li>
+              <li>Visitenkarten & Briefpapier</li>
+              <li>Druckabwicklung</li>
+            </ul>
+          </div>
         </div>
-        <div class="bg-white rounded-xl p-6 shadow hover:shadow-md transition cursor-pointer" onclick="toggleDetails(this)">
-          <h3 class="font-semibold text-xl">Social Media & Content</h3>
-          <ul class="mt-2 hidden text-left text-sm list-disc list-inside">
-            <li>Content-Planung</li>
-            <li>Reels, Stories, Ads</li>
-            <li>Plattformoptimierung</li>
-          </ul>
+        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer text-center" onclick="toggleDetails(this)">
+          <h3 class="text-2xl font-semibold">Social Media & Content</h3>
+          <div class="transition-max-height max-h-0 mt-4">
+            <ul class="text-left text-sm list-disc list-inside">
+              <li>Content-Planung</li>
+              <li>Reels, Stories, Ads</li>
+              <li>Plattformoptimierung</li>
+            </ul>
+          </div>
         </div>
-        <div class="bg-white rounded-xl p-6 shadow hover:shadow-md transition cursor-pointer" onclick="toggleDetails(this)">
-          <h3 class="font-semibold text-xl">KI & Automatisierung</h3>
-          <ul class="mt-2 hidden text-left text-sm list-disc list-inside">
-            <li>Chatbots & Messenger-KI</li>
-            <li>Automatisierte Workflows</li>
-            <li>Prompt Engineering</li>
-          </ul>
+        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer text-center" onclick="toggleDetails(this)">
+          <h3 class="text-2xl font-semibold">KI & Automatisierung</h3>
+          <div class="transition-max-height max-h-0 mt-4">
+            <ul class="text-left text-sm list-disc list-inside">
+              <li>Chatbots & Messenger-KI</li>
+              <li>Automatisierte Workflows</li>
+              <li>Prompt Engineering</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -72,8 +90,20 @@
 
     <script>
       function toggleDetails(card) {
-        const list = card.querySelector("ul");
-        list.classList.toggle("hidden");
+        const content = card.querySelector(".transition-max-height");
+        const isOpen = content.classList.contains("max-h-40");
+
+        // Alle schließen
+        document.querySelectorAll(".transition-max-height").forEach(el => {
+          el.classList.remove("max-h-40");
+          el.classList.add("max-h-0");
+        });
+
+        // Dieses öffnen wenn es vorher zu war
+        if (!isOpen) {
+          content.classList.remove("max-h-0");
+          content.classList.add("max-h-40");
+        }
       }
     </script>
   </body>
