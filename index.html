@@ -11,7 +11,8 @@
           extend: {
             animation: {
               fadeInUp: 'fadeInUp 0.8s ease-out both',
-              fadeIn: 'fadeIn 1s ease-in both'
+              fadeIn: 'fadeIn 1s ease-in both',
+              hoverPop: 'hoverPop 0.3s ease-in-out both'
             },
             keyframes: {
               fadeInUp: {
@@ -21,6 +22,10 @@
               fadeIn: {
                 '0%': { opacity: '0' },
                 '100%': { opacity: '1' },
+              },
+              hoverPop: {
+                '0%': { transform: 'scale(1)' },
+                '100%': { transform: 'scale(1.03)' },
               }
             },
           },
@@ -39,40 +44,33 @@
     </style>
   </head>
   <body class="bg-white text-gray-900">
-    <!-- Hero -->
-     
-<!-- Hero mit Hintergrundbild und zentriertem Logo -->
-<section class="relative min-h-screen flex items-center justify-center text-center p-6 bg-black text-white">
-  <!-- Hintergrundbild -->
-  <img src="images/hero-illustration.jpg" alt="Hintergrund" class="absolute inset-0 w-full h-full object-cover z-0" />
+    <!-- Hero mit Hintergrundbild und zentriertem Logo -->
+    <section class="relative min-h-screen flex items-center justify-center text-center p-6 bg-black text-white">
+      <img src="images/hero-illustration.jpg" alt="Hintergrund" class="absolute inset-0 w-full h-full object-cover z-0" loading="lazy" />
+      <div class="absolute inset-0 bg-black bg-opacity-60 z-10"></div>
+      <div class="relative z-20 flex flex-col items-center">
+        <img src="images/logo.png" alt="KcKonzept Logo" class="w-28 md:w-40 mb-6 animate-fadeIn" loading="lazy" />
+        <h1 class="text-4xl md:text-6xl font-bold animate-fadeInUp">Kreativ. Konsequent. KcKonzept.</h1>
+        <p class="mt-4 text-lg md:text-xl max-w-xl animate-fadeInUp delay-150">
+          Deine Werbeagentur für durchdachtes Design, innovative Technologien und mutige Ideen.
+        </p>
+      </div>
+    </section>
 
-  <!-- Dunkler Overlay -->
-  <div class="absolute inset-0 bg-black bg-opacity-60 z-10"></div>
-
-  <!-- Inhalt (zentriert) -->
-  <div class="relative z-20 flex flex-col items-center">
-    <img src="images/logo.png" alt="KcKonzept Logo" class="w-28 md:w-40 mb-6 animate-fadeIn" />
-    <h1 class="text-4xl md:text-6xl font-bold animate-fadeInUp">Kreativ. Konsequent. KcKonzept.</h1>
-    <p class="mt-4 text-lg md:text-xl max-w-xl animate-fadeInUp delay-150">
-      Deine Werbeagentur für durchdachtes Design, innovative Technologien und mutige Ideen.
-    </p>
-  </div>
-</section>
-
-    <!-- Über den Gründer -->
+    <!-- Über das Unternehmen -->
     <section class="p-6 md:p-16 bg-white text-center">
       <h2 class="text-3xl font-bold mb-4 animate-fadeInUp">Was KcKonzept ausmacht</h2>
       <p class="max-w-2xl mx-auto text-lg animate-fadeIn delay-150">
-        KcKonzept steht für klare Ideen, mutige Gestaltung und digitale Effizienz. Mit über zehn Jahren Erfahrung in Design-, Werbe- und Digitalprojekten entwickelt die Agentur durchdachte Konzepte, die nicht nur gut aussehen, sondern vor allem Wirkung zeigen. Unser Anspruch: kreative Lösungen, die Marken sichtbar machen und messbare Ergebnisse liefern.
+        KcKonzept steht für kreative Exzellenz, digitale Intelligenz und klare Markenstrategien. Unser Team verbindet Erfahrung mit Innovationsgeist, um Designlösungen zu entwickeln, die nicht nur beeindrucken, sondern messbar wirken. Von Branding bis Automatisierung – wir bringen Ideen auf den Punkt.
       </p>
-      <img src="images/ceo.jpg" alt="" class="mt-6 w-full max-w-md mx-auto rounded-xl shadow-md animate-fadeInUp delay-300" />
+      <img src="images/ceo.jpg" alt="Teamfoto" class="mt-6 w-full max-w-md mx-auto rounded-xl shadow-md animate-fadeInUp delay-300" loading="lazy" />
     </section>
 
     <!-- Leistungen -->
     <section class="p-6 md:p-16 bg-gray-100 text-center">
       <h2 class="text-4xl font-bold mb-10 animate-fadeInUp">Unsere Leistungen</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer text-center animate-fadeInUp" onclick="toggleDetails(this)">
+        <div class="bg-white rounded-3xl p-6 shadow-xl transition-all duration-300 cursor-pointer text-center animate-fadeInUp hover:animate-hoverPop" onclick="toggleDetails(this)">
           <h3 class="text-2xl font-semibold">Branding & Markenentwicklung</h3>
           <div class="transition-max-height max-h-0 mt-4">
             <ul class="text-left text-sm list-disc list-inside">
@@ -82,7 +80,7 @@
             </ul>
           </div>
         </div>
-        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer text-center animate-fadeInUp delay-100" onclick="toggleDetails(this)">
+        <div class="bg-white rounded-3xl p-6 shadow-xl transition-all duration-300 cursor-pointer text-center animate-fadeInUp delay-100 hover:animate-hoverPop" onclick="toggleDetails(this)">
           <h3 class="text-2xl font-semibold">Printdesign & Druck</h3>
           <div class="transition-max-height max-h-0 mt-4">
             <ul class="text-left text-sm list-disc list-inside">
@@ -92,7 +90,7 @@
             </ul>
           </div>
         </div>
-        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer text-center animate-fadeInUp delay-200" onclick="toggleDetails(this)">
+        <div class="bg-white rounded-3xl p-6 shadow-xl transition-all duration-300 cursor-pointer text-center animate-fadeInUp delay-200 hover:animate-hoverPop" onclick="toggleDetails(this)">
           <h3 class="text-2xl font-semibold">Social Media & Content</h3>
           <div class="transition-max-height max-h-0 mt-4">
             <ul class="text-left text-sm list-disc list-inside">
@@ -102,7 +100,7 @@
             </ul>
           </div>
         </div>
-        <div class="bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer text-center animate-fadeInUp delay-300" onclick="toggleDetails(this)">
+        <div class="bg-white rounded-3xl p-6 shadow-xl transition-all duration-300 cursor-pointer text-center animate-fadeInUp delay-300 hover:animate-hoverPop" onclick="toggleDetails(this)">
           <h3 class="text-2xl font-semibold">KI & Automatisierung</h3>
           <div class="transition-max-height max-h-0 mt-4">
             <ul class="text-left text-sm list-disc list-inside">
@@ -125,7 +123,6 @@
       </div>
     </section>
 
-    <!-- Footer + JS -->
     <footer class="text-center text-sm text-gray-500 py-6">
       © 2025 KcKonzept – Werbeagentur. Alle Rechte vorbehalten.
     </footer>
