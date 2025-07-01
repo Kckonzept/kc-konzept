@@ -12,7 +12,7 @@
             animation: {
               fadeInUp: 'fadeInUp 0.8s ease-out both',
               fadeIn: 'fadeIn 1s ease-in both',
-              pulseSlow: 'pulse 2.5s ease-in-out infinite'
+              pulseDark: 'pulseDark 2.5s ease-in-out infinite'
             },
             keyframes: {
               fadeInUp: {
@@ -22,6 +22,10 @@
               fadeIn: {
                 '0%': { opacity: '0' },
                 '100%': { opacity: '1' },
+              },
+              pulseDark: {
+                '0%, 100%': { backgroundColor: '#22c55e' },
+                '50%': { backgroundColor: '#15803d' }
               }
             },
           },
@@ -75,25 +79,33 @@
       <img src="images/ceo.jpg" alt="KcKonzept" class="mt-6 w-full max-w-md mx-auto rounded-xl shadow-md animate-fadeInUp delay-300" />
     </section>
 
-    <!-- Interaktive Leistungsmatrix -->
+    <!-- Interaktive Leistungsmatrix mit aufklappbaren Elementen -->
     <section class="p-6 md:p-16 bg-gray-100 text-center">
       <h2 class="text-4xl font-bold mb-10 animate-fadeInUp">Unsere Leistungen</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <div class="bg-white rounded-3xl p-6 shadow-xl hover:scale-105 transform transition-all duration-300 animate-fadeInUp">
+        <div class="bg-white rounded-3xl p-6 shadow-xl cursor-pointer transition-all duration-300 animate-fadeInUp" onclick="toggleDetails(this)">
           <h3 class="text-2xl font-semibold mb-2">Branding & Markenentwicklung</h3>
-          <p class="text-sm">Markenstrategie, Logoentwicklung, Design-Guidelines</p>
+          <div class="transition-max-height max-h-0 overflow-hidden">
+            <p class="text-sm mt-2">Markenstrategie, Logoentwicklung, Design-Guidelines</p>
+          </div>
         </div>
-        <div class="bg-white rounded-3xl p-6 shadow-xl hover:scale-105 transform transition-all duration-300 animate-fadeInUp delay-100">
+        <div class="bg-white rounded-3xl p-6 shadow-xl cursor-pointer transition-all duration-300 animate-fadeInUp delay-100" onclick="toggleDetails(this)">
           <h3 class="text-2xl font-semibold mb-2">Printdesign & Druck</h3>
-          <p class="text-sm">Flyer, Broschüren, Plakate, Visitenkarten & Briefpapier</p>
+          <div class="transition-max-height max-h-0 overflow-hidden">
+            <p class="text-sm mt-2">Flyer, Broschüren, Plakate, Visitenkarten & Briefpapier</p>
+          </div>
         </div>
-        <div class="bg-white rounded-3xl p-6 shadow-xl hover:scale-105 transform transition-all duration-300 animate-fadeInUp delay-200">
+        <div class="bg-white rounded-3xl p-6 shadow-xl cursor-pointer transition-all duration-300 animate-fadeInUp delay-200" onclick="toggleDetails(this)">
           <h3 class="text-2xl font-semibold mb-2">Social Media & Content</h3>
-          <p class="text-sm">Content-Planung, Reels, Stories, Plattformoptimierung</p>
+          <div class="transition-max-height max-h-0 overflow-hidden">
+            <p class="text-sm mt-2">Content-Planung, Reels, Stories, Plattformoptimierung</p>
+          </div>
         </div>
-        <div class="bg-white rounded-3xl p-6 shadow-xl hover:scale-105 transform transition-all duration-300 animate-fadeInUp delay-300">
+        <div class="bg-white rounded-3xl p-6 shadow-xl cursor-pointer transition-all duration-300 animate-fadeInUp delay-300" onclick="toggleDetails(this)">
           <h3 class="text-2xl font-semibold mb-2">KI & Automatisierung</h3>
-          <p class="text-sm">Chatbots, Workflows, Prompt Engineering</p>
+          <div class="transition-max-height max-h-0 overflow-hidden">
+            <p class="text-sm mt-2">Chatbots, Workflows, Prompt Engineering</p>
+          </div>
         </div>
       </div>
     </section>
@@ -104,12 +116,29 @@
       <p class="text-lg max-w-xl mx-auto mb-8 animate-fadeIn delay-100">Du hast ein Projekt im Kopf oder willst einfach mehr erfahren? Schreib uns oder schick direkt eine Nachricht!</p>
       <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fadeIn delay-200">
         <a href="mailto:kckonzept.agentur@gmail.com" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full text-lg transition">📧 E-Mail schreiben</a>
-        <a href="https://wa.me/4917631317251" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full text-lg transition animate-pulseSlow">💬 WhatsApp starten</a>
+        <a href="https://wa.me/4917631317251" class="bg-green-500 text-white px-6 py-3 rounded-full text-lg transition animate-pulseDark">💬 WhatsApp starten</a>
       </div>
     </section>
 
     <footer class="text-center text-sm text-gray-500 py-6">
       © 2025 KcKonzept – Werbeagentur. Alle Rechte vorbehalten.
     </footer>
+
+    <script>
+      function toggleDetails(card) {
+        const content = card.querySelector('.transition-max-height');
+        const isOpen = content.classList.contains('max-h-40');
+
+        document.querySelectorAll('.transition-max-height').forEach(el => {
+          el.classList.remove('max-h-40');
+          el.classList.add('max-h-0');
+        });
+
+        if (!isOpen) {
+          content.classList.remove('max-h-0');
+          content.classList.add('max-h-40');
+        }
+      }
+    </script>
   </body>
 </html>
