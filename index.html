@@ -12,7 +12,7 @@
             animation: {
               fadeInUp: 'fadeInUp 0.8s ease-out both',
               fadeIn: 'fadeIn 1s ease-in both',
-              hoverPop: 'hoverPop 0.3s ease-in-out both'
+              pulseSlow: 'pulse 2.5s ease-in-out infinite'
             },
             keyframes: {
               fadeInUp: {
@@ -22,10 +22,6 @@
               fadeIn: {
                 '0%': { opacity: '0' },
                 '100%': { opacity: '1' },
-              },
-              hoverPop: {
-                '0%': { transform: 'scale(1)' },
-                '100%': { transform: 'scale(1.03)' },
               }
             },
           },
@@ -41,74 +37,63 @@
         transition: max-height 0.4s ease-in-out;
         overflow: hidden;
       }
+      .line-draw path {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: dash 3s ease forwards;
+      }
+      @keyframes dash {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
     </style>
   </head>
   <body class="bg-white text-gray-900">
-    <!-- Hero mit Hintergrundbild und zentriertem Logo -->
+    <!-- Hero mit animiertem Logo (Pfadzeichnung) -->
     <section class="relative min-h-screen flex items-center justify-center text-center p-6 bg-black text-white">
-      <img src="images/hero-illustration.jpg" alt="Hintergrund" class="absolute inset-0 w-full h-full object-cover z-0" loading="lazy" />
+      <img src="images/hero-illustration.jpg" alt="Hintergrund" class="absolute inset-0 w-full h-full object-cover z-0" />
       <div class="absolute inset-0 bg-black bg-opacity-60 z-10"></div>
       <div class="relative z-20 flex flex-col items-center">
-        <img src="images/logo.png" alt="KcKonzept Logo" class="w-28 md:w-40 mb-6 animate-fadeIn" loading="lazy" />
+        <svg class="w-28 md:w-40 mb-6 animate-fadeIn line-draw" viewBox="0 0 200 50" fill="none" stroke="white" stroke-width="2">
+          <path d="M10 40 L50 10 L90 40 L130 10 L170 40" />
+        </svg>
         <h1 class="text-4xl md:text-6xl font-bold animate-fadeInUp">Kreativ. Konsequent. KcKonzept.</h1>
         <p class="mt-4 text-lg md:text-xl max-w-xl animate-fadeInUp delay-150">
           Deine Werbeagentur für durchdachtes Design, innovative Technologien und mutige Ideen.
         </p>
+        <span class="mt-2 text-sm text-gray-300 animate-fadeIn delay-300">Standorte: Köln &ndash; Münster</span>
       </div>
     </section>
 
-    <!-- Über das Unternehmen -->
+    <!-- Über uns -->
     <section class="p-6 md:p-16 bg-white text-center">
-      <h2 class="text-3xl font-bold mb-4 animate-fadeInUp">Was KcKonzept ausmacht</h2>
+      <h2 class="text-3xl font-bold mb-4 animate-fadeInUp">Über KcKonzept</h2>
       <p class="max-w-2xl mx-auto text-lg animate-fadeIn delay-150">
-        KcKonzept steht für kreative Exzellenz, digitale Intelligenz und klare Markenstrategien. Unser Team verbindet Erfahrung mit Innovationsgeist, um Designlösungen zu entwickeln, die nicht nur beeindrucken, sondern messbar wirken. Von Branding bis Automatisierung – wir bringen Ideen auf den Punkt.
+        KcKonzept ist eine kreative Werbeagentur mit Standorten in Köln und Münster. Wir vereinen modernes Design, technologische Innovationskraft und strategisches Denken. Mit über zehn Jahren Branchenerfahrung entwickeln wir Marken und Kampagnen, die nicht nur auffallen, sondern nachhaltig wirken. Unser Anspruch: mutige Konzepte, die Ergebnisse liefern.
       </p>
-      <img src="images/ceo.jpg" alt="Teamfoto" class="mt-6 w-full max-w-md mx-auto rounded-xl shadow-md animate-fadeInUp delay-300" loading="lazy" />
+      <img src="images/ceo.jpg" alt="KcKonzept" class="mt-6 w-full max-w-md mx-auto rounded-xl shadow-md animate-fadeInUp delay-300" />
     </section>
 
-    <!-- Leistungen -->
+    <!-- Interaktive Leistungsmatrix -->
     <section class="p-6 md:p-16 bg-gray-100 text-center">
       <h2 class="text-4xl font-bold mb-10 animate-fadeInUp">Unsere Leistungen</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <div class="bg-white rounded-3xl p-6 shadow-xl transition-all duration-300 cursor-pointer text-center animate-fadeInUp hover:animate-hoverPop" onclick="toggleDetails(this)">
-          <h3 class="text-2xl font-semibold">Branding & Markenentwicklung</h3>
-          <div class="transition-max-height max-h-0 mt-4">
-            <ul class="text-left text-sm list-disc list-inside">
-              <li>Markenstrategie</li>
-              <li>Logoentwicklung</li>
-              <li>Design-Guidelines</li>
-            </ul>
-          </div>
+        <div class="bg-white rounded-3xl p-6 shadow-xl hover:scale-105 transform transition-all duration-300 animate-fadeInUp">
+          <h3 class="text-2xl font-semibold mb-2">Branding & Markenentwicklung</h3>
+          <p class="text-sm">Markenstrategie, Logoentwicklung, Design-Guidelines</p>
         </div>
-        <div class="bg-white rounded-3xl p-6 shadow-xl transition-all duration-300 cursor-pointer text-center animate-fadeInUp delay-100 hover:animate-hoverPop" onclick="toggleDetails(this)">
-          <h3 class="text-2xl font-semibold">Printdesign & Druck</h3>
-          <div class="transition-max-height max-h-0 mt-4">
-            <ul class="text-left text-sm list-disc list-inside">
-              <li>Flyer, Broschüren, Plakate</li>
-              <li>Visitenkarten & Briefpapier</li>
-              <li>Druckabwicklung</li>
-            </ul>
-          </div>
+        <div class="bg-white rounded-3xl p-6 shadow-xl hover:scale-105 transform transition-all duration-300 animate-fadeInUp delay-100">
+          <h3 class="text-2xl font-semibold mb-2">Printdesign & Druck</h3>
+          <p class="text-sm">Flyer, Broschüren, Plakate, Visitenkarten & Briefpapier</p>
         </div>
-        <div class="bg-white rounded-3xl p-6 shadow-xl transition-all duration-300 cursor-pointer text-center animate-fadeInUp delay-200 hover:animate-hoverPop" onclick="toggleDetails(this)">
-          <h3 class="text-2xl font-semibold">Social Media & Content</h3>
-          <div class="transition-max-height max-h-0 mt-4">
-            <ul class="text-left text-sm list-disc list-inside">
-              <li>Content-Planung</li>
-              <li>Reels, Stories, Ads</li>
-              <li>Plattformoptimierung</li>
-            </ul>
-          </div>
+        <div class="bg-white rounded-3xl p-6 shadow-xl hover:scale-105 transform transition-all duration-300 animate-fadeInUp delay-200">
+          <h3 class="text-2xl font-semibold mb-2">Social Media & Content</h3>
+          <p class="text-sm">Content-Planung, Reels, Stories, Plattformoptimierung</p>
         </div>
-        <div class="bg-white rounded-3xl p-6 shadow-xl transition-all duration-300 cursor-pointer text-center animate-fadeInUp delay-300 hover:animate-hoverPop" onclick="toggleDetails(this)">
-          <h3 class="text-2xl font-semibold">KI & Automatisierung</h3>
-          <div class="transition-max-height max-h-0 mt-4">
-            <ul class="text-left text-sm list-disc list-inside">
-              <li>Chatbots & Messenger-KI</li>
-              <li>Automatisierte Workflows</li>
-              <li>Prompt Engineering</li>
-            </ul>
-          </div>
+        <div class="bg-white rounded-3xl p-6 shadow-xl hover:scale-105 transform transition-all duration-300 animate-fadeInUp delay-300">
+          <h3 class="text-2xl font-semibold mb-2">KI & Automatisierung</h3>
+          <p class="text-sm">Chatbots, Workflows, Prompt Engineering</p>
         </div>
       </div>
     </section>
@@ -119,29 +104,12 @@
       <p class="text-lg max-w-xl mx-auto mb-8 animate-fadeIn delay-100">Du hast ein Projekt im Kopf oder willst einfach mehr erfahren? Schreib uns oder schick direkt eine Nachricht!</p>
       <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fadeIn delay-200">
         <a href="mailto:kckonzept.agentur@gmail.com" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full text-lg transition">📧 E-Mail schreiben</a>
-        <a href="https://wa.me/4917631317251" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full text-lg transition">💬 WhatsApp starten</a>
+        <a href="https://wa.me/4917631317251" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full text-lg transition animate-pulseSlow">💬 WhatsApp starten</a>
       </div>
     </section>
 
     <footer class="text-center text-sm text-gray-500 py-6">
       © 2025 KcKonzept – Werbeagentur. Alle Rechte vorbehalten.
     </footer>
-
-    <script>
-      function toggleDetails(card) {
-        const content = card.querySelector(".transition-max-height");
-        const isOpen = content.classList.contains("max-h-40");
-
-        document.querySelectorAll(".transition-max-height").forEach(el => {
-          el.classList.remove("max-h-40");
-          el.classList.add("max-h-0");
-        });
-
-        if (!isOpen) {
-          content.classList.remove("max-h-0");
-          content.classList.add("max-h-40");
-        }
-      }
-    </script>
   </body>
 </html>
