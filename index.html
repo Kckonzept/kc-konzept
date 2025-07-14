@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KcKonzept – 3D Start</title>
+
+  <!-- Google Font für elegante Schrift -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
   <style>
     * {
       box-sizing: border-box;
@@ -42,7 +46,6 @@
 
     .layer.bg {
       z-index: 0;
-      transform: translateZ();
       overflow: hidden;
     }
 
@@ -52,7 +55,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      object-fit: fill; /* <- Bild wird gestreckt */
+      object-fit: fill;
     }
 
     .layer.logo {
@@ -69,10 +72,11 @@
     }
 
     .logo-text span {
+      font-family: 'Playfair Display', serif;
       font-size: 4rem;
-      font-weight: bold;
-      color: #ffe066;
-      text-shadow: 0 0 10px #ffe066, 0 0 20px #ffe066;
+      font-weight: 700;
+      color: #ffaa33;
+      text-shadow: 0 0 15px #ffaa33, 0 0 35px #ff9900;
       opacity: 0;
       display: inline-block;
       transition: opacity 0.3s ease-in;
