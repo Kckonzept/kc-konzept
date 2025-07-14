@@ -40,21 +40,16 @@
       backface-visibility: hidden;
     }
 
-.layer.bg {
-  z-index: 0;
-  transform: translateZ(-300px);
-  overflow: hidden;
-}
+    .layer.bg {
+      z-index: 0;
+      transform: translateZ(-300px);
+    }
 
-.layer.bg img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  transform: scale(2);
-  transform-origin: center;
-}
+    .layer.bg img {
+      width: 100vw;
+      height: 100vh;
+      object-fit: fill;
+    }
 
     .layer.logo {
       transform: translateZ(0px);
