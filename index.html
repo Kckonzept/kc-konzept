@@ -29,7 +29,7 @@
     .layer.bg img {
       position: absolute; top: 0; left: 0;
       width: 100vw; height: 100vh;
-      object-fit: fill;
+      object-fit: cover;
     }
     .layer.logo {
       transform: translateZ(0px);
@@ -112,6 +112,16 @@
       0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
       100% { transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(var(--s)); opacity: 0; }
     }
+    .back-button {
+      position: absolute;
+      top: 20px; left: 20px;
+      font-size: 2rem;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 4;
+    }
   </style>
 </head>
 <body>
@@ -156,6 +166,7 @@
     setTimeout(() => { document.getElementById('menuButtons').style.opacity = 1; }, 3000);
     document.addEventListener("mousemove", e => {
       const logo = document.querySelector(".logo-text");
+      if (!logo) return;
       const rect = logo.getBoundingClientRect();
       const dx = e.clientX - (rect.left + rect.width / 2);
       const dy = e.clientY - (rect.top + rect.height / 2);
@@ -185,7 +196,7 @@
       leafContainer.appendChild(leaf);
       setTimeout(() => leaf.remove(), duration + 100);
     }
-    setInterval(createLeaf, 2000); // weniger Blätter
+    setInterval(createLeaf, 2000);
 
     function triggerLeafStorm(newContentId) {
       const stormCount = 50;
@@ -210,7 +221,7 @@
       contentArea.style.opacity = 0;
       setTimeout(() => {
         const newHTML = document.getElementById(newContentId).innerHTML;
-        contentArea.innerHTML = `<div class=\"logo-text\">${newHTML}</div>`;
+        contentArea.innerHTML = `<button class='back-button' onclick=\"location.reload()\">\u2190</button><div class='static-content'>${newHTML}</div>`;
         contentArea.style.opacity = 1;
       }, 1200);
     }
