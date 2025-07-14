@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KcKonzept – 3D Start</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     html, body {
       height: 100%;
       width: 100%;
@@ -36,11 +41,14 @@
     }
 
     .layer.bg {
-      background: url('images/background.jpg') no-repeat center center fixed;
-      background-size: cover;
-      object-fit: cover;
-      transform: translateZ(-300px);
       z-index: 0;
+      transform: translateZ(-300px);
+    }
+
+    .layer.bg img {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
     }
 
     .layer.logo {
@@ -76,7 +84,7 @@
     }
 
     .menu button {
-      background-color: rgba(0,0,0,0.6);
+      background-color: rgba(0, 0, 0, 0.6);
       padding: 10px 20px;
       font-size: 1rem;
       border-radius: 8px;
@@ -124,7 +132,11 @@
       <path class="line2" d="M20 190 Q120 10 380 190" />
       <path class="line3" d="M20 180 Q120 0 380 180" />
     </svg>
-    <div class="layer bg"></div>
+
+    <div class="layer bg">
+      <img src="images/background.jpg" alt="Hintergrundbild" />
+    </div>
+
     <div class="layer logo">
       <div class="logo-text" id="logoText"></div>
       <div class="menu" id="menuButtons">
