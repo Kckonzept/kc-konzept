@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🧠KcKonzept – Werbeagentur</title>
+  <title>KcKonzept – 3D Start</title>
   <style>
     * {
       box-sizing: border-box;
@@ -43,12 +43,16 @@
     .layer.bg {
       z-index: 0;
       transform: translateZ(-300px);
+      overflow: hidden;
     }
 
     .layer.bg img {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100vw;
       height: 100vh;
-      object-fit: fill;
+      object-fit: fill; /* <- Bild wird gestreckt */
     }
 
     .layer.logo {
