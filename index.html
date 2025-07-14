@@ -47,13 +47,12 @@
     }
 
     .layer.bg img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: fill; /* <- Bild wird gestreckt */
-    }
+  width: 100vw;
+  height: 100vh;
+  object-fit: fill;
+  transform: scale(1.2); /* Überdeckt die Balken im Bild selbst */
+}
+    
 
     .layer.logo {
       transform: translateZ(0px);
