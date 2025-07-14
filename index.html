@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -9,11 +9,15 @@
   <link rel="icon" href="images/favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800&display=swap" rel="stylesheet">
   <style>
-    @media (max-width: 500px) {
-  .big-button {
-    width: 90%;
-    font-size: 1.1rem;
-    padding: 14px 20px;
+    .static-content {
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 30px 20px;
+  scrollbar-width: thin;
+}
+@media (max-width: 600px) {
+  .layer.bg img {
+    content: url('images/mobile-background.jpg'); /* Pfad zum mobilen Bild */
   }
 }
 .big-button {
@@ -398,8 +402,18 @@
 
       setTimeout(() => {
         const newHTML = document.getElementById(newContentId).innerHTML;
-        contentArea.innerHTML = `<button class='back-button' onclick="location.reload()">←</button><div class='static-content'>${newHTML}</div>`;
-        contentArea.style.opacity = 1;
+       contentArea.innerHTML = `
+  <button class='back-button' onclick="location.reload()">←</button>
+  <div class='static-content'>${newHTML}</div>
+`;
+contentArea.style.overflow = "visible";
+contentArea.style.display = "flex";
+contentArea.style.flexDirection = "column";
+contentArea.style.justifyContent = "flex-start";
+contentArea.style.alignItems = "center";
+contentArea.style.padding = "20px";
+contentArea.style.maxHeight = "100vh";
+contentArea.style.opacity = 1;
 
         // Akkordeon Verhalten aktivieren
         const accordion = document.getElementById("leistungen-accordion");
