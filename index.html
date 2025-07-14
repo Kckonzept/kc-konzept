@@ -29,7 +29,7 @@
     .layer.bg img {
       position: absolute; top: 0; left: 0;
       width: 100vw; height: 100vh;
-      object-fit: cover;
+      object-fit: fill;
     }
     .layer.logo {
       transform: translateZ(0px);
@@ -136,20 +136,45 @@
     </div>
     <div class="layer logo" id="contentArea">
       <div class="logo-text" id="logoText"></div>
-      <div class="menu" id="menuButtons">
-        <button onclick="triggerLeafStorm('inhalt-leistungen')" style="border: 2px solid #d580ff; color: #d580ff;">Leistungen</button>
-        <button onclick="triggerLeafStorm('inhalt-kontakt')" style="border: 2px solid #ff6666; color: #ff6666;">Kontakt</button>
+      $1
+        <button onclick="triggerLeafStorm('inhalt-ueber')" style="border: 2px solid #66fff7; color: #66fff7;">Über KcKonzept</button>
       </div>
     </div>
   </div>
   <div id="leaf-container"></div>
   <div id="inhalt-leistungen" style="display:none;">
-    <h2>Leistungen</h2>
-    <p>Hier stehen die Leistungen von KcKonzept.</p>
+  <h2>Leistungen</h2>
+  <div style="text-align: left; max-width: 600px; margin: 0 auto; font-family: 'Playfair Display', serif;">
+    <details>
+      <summary><strong>Webdesign & Entwicklung</strong></summary>
+      <p>Individuelle Websites mit modernem Design, responsiv für alle Geräte – inkl. Hosting, Domain & CMS.</p>
+    </details>
+    <details>
+      <summary><strong>KI-Bots & Automatisierung</strong></summary>
+      <p>Beratung, Entwicklung und Integration von Chatbots, KI-Antwortsystemen und Automatisierungen für Kundenservice oder interne Prozesse.</p>
+    </details>
+    <details>
+      <summary><strong>Flyer & Printmedien</strong></summary>
+      <p>Design und Druck von Flyern, Broschüren, Visitenkarten – hochwertig & termingerecht geliefert.</p>
+    </details>
+    <details>
+      <summary><strong>Corporate Design</strong></summary>
+      <p>Logoentwicklung, Farbwelt, Schriftbild & visuelle Identität für einen einheitlichen Markenauftritt.</p>
+    </details>
+    <details>
+      <summary><strong>Social Media & Content</strong></summary>
+      <p>Strategie, Planung, Design und regelmäßige Inhalte für Instagram, LinkedIn & Co.</p>
+    </details>
+    <details>
+      <summary><strong>SEO & Online Marketing</strong></summary>
+      <p>Suchmaschinenoptimierung, Google Ads, Meta-Kampagnen und Beratung für bessere Reichweite und Conversion.</p>
+    </details>
   </div>
-  <div id="inhalt-kontakt" style="display:none;">
-    <h2>Kontakt</h2>
-    <p>Hier stehen die Kontaktdaten oder ein Formular.</p>
+</div>
+  $1
+  <div id="inhalt-ueber" style="display:none;">
+    <h2>Über KcKonzept</h2>
+    <p>Hier stehen Informationen über KcKonzept.</p>
   </div>
   <script>
     const logoText = "KcKonzept";
