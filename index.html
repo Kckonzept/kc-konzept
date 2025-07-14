@@ -122,6 +122,34 @@
       cursor: pointer;
       z-index: 4;
     }
+
+    .leistung-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid #ffaa33;
+      border-radius: 12px;
+      padding: 15px 20px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .leistung-box[open] {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .leistung-box summary {
+      font-size: 1.2rem;
+      font-weight: bold;
+      outline: none;
+      text-align: center;
+    }
+    .leistung-box ul {
+      margin-top: 10px;
+      list-style: disc;
+      padding-left: 20px;
+      text-align: left;
+    }
+    .leistung-box li {
+      margin-bottom: 5px;
+    }
   </style>
 </head>
 <body>
@@ -136,46 +164,85 @@
     </div>
     <div class="layer logo" id="contentArea">
       <div class="logo-text" id="logoText"></div>
-      $1
+      <div class="menu" id="menuButtons">
+        <button onclick="triggerLeafStorm('inhalt-leistungen')" style="border: 2px solid #d580ff; color: #d580ff;">Leistungen</button>
+        <button onclick="triggerLeafStorm('inhalt-kontakt')" style="border: 2px solid #ff6666; color: #ff6666;">Kontakt</button>
         <button onclick="triggerLeafStorm('inhalt-ueber')" style="border: 2px solid #66fff7; color: #66fff7;">Über KcKonzept</button>
       </div>
     </div>
   </div>
   <div id="leaf-container"></div>
+
   <div id="inhalt-leistungen" style="display:none;">
-  <h2>Leistungen</h2>
-  <div style="text-align: left; max-width: 600px; margin: 0 auto; font-family: 'Playfair Display', serif;">
-    <details>
-      <summary><strong>Webdesign & Entwicklung</strong></summary>
-      <p>Individuelle Websites mit modernem Design, responsiv für alle Geräte – inkl. Hosting, Domain & CMS.</p>
-    </details>
-    <details>
-      <summary><strong>KI-Bots & Automatisierung</strong></summary>
-      <p>Beratung, Entwicklung und Integration von Chatbots, KI-Antwortsystemen und Automatisierungen für Kundenservice oder interne Prozesse.</p>
-    </details>
-    <details>
-      <summary><strong>Flyer & Printmedien</strong></summary>
-      <p>Design und Druck von Flyern, Broschüren, Visitenkarten – hochwertig & termingerecht geliefert.</p>
-    </details>
-    <details>
-      <summary><strong>Corporate Design</strong></summary>
-      <p>Logoentwicklung, Farbwelt, Schriftbild & visuelle Identität für einen einheitlichen Markenauftritt.</p>
-    </details>
-    <details>
-      <summary><strong>Social Media & Content</strong></summary>
-      <p>Strategie, Planung, Design und regelmäßige Inhalte für Instagram, LinkedIn & Co.</p>
-    </details>
-    <details>
-      <summary><strong>SEO & Online Marketing</strong></summary>
-      <p>Suchmaschinenoptimierung, Google Ads, Meta-Kampagnen und Beratung für bessere Reichweite und Conversion.</p>
-    </details>
+    <h2 style="text-align: center; color: #ffaa33; font-family: 'Playfair Display', serif;">Leistungen</h2>
+    <div id="leistungen-accordion" style="display: flex; flex-direction: column; gap: 20px; max-width: 700px; margin: 30px auto; font-family: 'Playfair Display', serif;">
+
+      <details class="leistung-box">
+        <summary>Webdesign & Entwicklung</summary>
+        <ul>
+          <li>Individuelle Websites mit modernem Design</li>
+          <li>Responsiv für alle Geräte</li>
+          <li>Inklusive Hosting, Domain & CMS</li>
+        </ul>
+      </details>
+
+      <details class="leistung-box">
+        <summary>KI-Bots & Automatisierung</summary>
+        <ul>
+          <li>Beratung und Entwicklung von Chatbots</li>
+          <li>KI-Antwortsysteme</li>
+          <li>Automatisierungen für Kundenservice oder interne Prozesse</li>
+        </ul>
+      </details>
+
+      <details class="leistung-box">
+        <summary>Flyer & Printmedien</summary>
+        <ul>
+          <li>Design und Druck von Flyern, Broschüren, Visitenkarten</li>
+          <li>Hochwertig & termingerecht geliefert</li>
+        </ul>
+      </details>
+
+      <details class="leistung-box">
+        <summary>Corporate Design</summary>
+        <ul>
+          <li>Logoentwicklung</li>
+          <li>Farbwelt, Schriftbild & visuelle Identität</li>
+          <li>Einheitlicher Markenauftritt</li>
+        </ul>
+      </details>
+
+      <details class="leistung-box">
+        <summary>Social Media & Content</summary>
+        <ul>
+          <li>Strategie & Planung</li>
+          <li>Design & regelmäßige Inhalte</li>
+          <li>Für Instagram, LinkedIn & Co.</li>
+        </ul>
+      </details>
+
+      <details class="leistung-box">
+        <summary>SEO & Online Marketing</summary>
+        <ul>
+          <li>Suchmaschinenoptimierung</li>
+          <li>Google Ads & Meta-Kampagnen</li>
+          <li>Beratung für Reichweite & Conversion</li>
+        </ul>
+      </details>
+
+    </div>
   </div>
-</div>
-  $1
+
+  <div id="inhalt-kontakt" style="display:none;">
+    <h2>Kontakt</h2>
+    <p>Hier kommt später ein Kontaktformular oder Kontaktinformationen hin.</p>
+  </div>
+
   <div id="inhalt-ueber" style="display:none;">
     <h2>Über KcKonzept</h2>
     <p>Hier stehen Informationen über KcKonzept.</p>
   </div>
+
   <script>
     const logoText = "KcKonzept";
     const container = document.getElementById("logoText");
@@ -226,6 +293,10 @@
     function triggerLeafStorm(newContentId) {
       const stormCount = 50;
       const stormHeight = window.innerHeight / 2;
+
+      const svg = document.querySelector(".line-svg");
+      if (svg) svg.style.display = "none";
+
       for (let i = 0; i < stormCount; i++) {
         const leaf = document.createElement("div");
         leaf.classList.add("leaf");
@@ -242,12 +313,26 @@
         leafContainer.appendChild(leaf);
         setTimeout(() => leaf.remove(), duration + 100);
       }
+
       const contentArea = document.getElementById("contentArea");
       contentArea.style.opacity = 0;
+
       setTimeout(() => {
         const newHTML = document.getElementById(newContentId).innerHTML;
-        contentArea.innerHTML = `<button class='back-button' onclick=\"location.reload()\">\u2190</button><div class='static-content'>${newHTML}</div>`;
+        contentArea.innerHTML = `<button class='back-button' onclick="location.reload()">←</button><div class='static-content'>${newHTML}</div>`;
         contentArea.style.opacity = 1;
+
+        // Akkordeon Verhalten aktivieren
+        const accordion = document.getElementById("leistungen-accordion");
+        if (accordion) {
+          accordion.addEventListener("click", e => {
+            if (e.target.tagName.toLowerCase() !== "summary") return;
+            const current = e.target.parentElement;
+            Array.from(accordion.children).forEach(detail => {
+              if (detail !== current) detail.removeAttribute("open");
+            });
+          });
+        }
       }, 1200);
     }
   </script>
