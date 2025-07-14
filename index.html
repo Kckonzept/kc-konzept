@@ -6,6 +6,54 @@
   <title>🧠 KcKonzept – Werbeagentur </title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800&display=swap" rel="stylesheet">
   <style>
+    @media (max-width: 500px) {
+  .big-button {
+    width: 90%;
+    font-size: 1.1rem;
+    padding: 14px 20px;
+  }
+}
+    .big-button {
+  display: inline-block;
+  padding: 18px 40px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: pulse 2s infinite;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+
+}
+  .big-button:active {
+  transform: scale(0.97);
+}
+.big-button:hover {
+  transform: scale(1.05);
+}
+
+.whatsapp-button {
+  background-color: #25D366;
+  box-shadow: 0 0 25px #25D366aa;
+}
+
+.email-button {
+  background-color: #4285F4;
+  box-shadow: 0 0 25px #4285F4aa;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.25);
+  }
+}
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
       height: 100%; width: 100%; overflow: hidden;
@@ -233,15 +281,20 @@
     </div>
   </div>
 
-  <div id="inhalt-kontakt" style="display:none;">
-    <h2>Kontakt</h2>
-    <p>Hier kommt später ein Kontaktformular oder Kontaktinformationen hin.</p>
+<div id="inhalt-kontakt" style="display:none;">
+  <div style="max-width: 700px; margin: 60px auto; text-align: center; font-family: 'Playfair Display', serif; color: #fff;">
+    <h2 style="color: #ffffff; margin-bottom: 20px;">Kontakt</h2>
+    <p style="font-size: 1.2rem; margin-bottom: 40px;">
+      Du hast Fragen, ein Projekt oder möchtest einfach mit uns sprechen?<br />
+      Wir sind erreichbar <strong>täglich von 9:00 bis 20:00 Uhr</strong> - <br />
+      außer sonntags - da laden wir unsere Kreativbatterien.
+    </p>
+    <div style="display: flex; flex-direction: column; gap: 25px; align-items: center;">
+      <a href="https://wa.me/4917631317251" target="_blank" class="big-button whatsapp-button">💬 WhatsApp</a>
+      <a href="mailto:kckonzept.agentur@gmail.com" class="big-button email-button">📧 E-Mail schreiben</a>
+    </div>
   </div>
-
-  <div id="inhalt-ueber" style="display:none;">
-    <h2>Über KcKonzept</h2>
-    <p>Hier stehen Informationen über KcKonzept.</p>
-  </div>
+</div>
 
   <script>
     const logoText = "KcKonzept";
