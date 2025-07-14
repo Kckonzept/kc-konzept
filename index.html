@@ -42,17 +42,18 @@
 
     .layer.bg {
       z-index: 0;
-      transform: translateZ(-300px);
+      transform: translateZ();
       overflow: hidden;
     }
 
     .layer.bg img {
-  width: 100vw;
-  height: 100vh;
-  object-fit: fill;
-  transform: scale(1.2); /* Überdeckt die Balken im Bild selbst */
-}
-    
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: fill; /* <- Bild wird gestreckt */
+    }
 
     .layer.logo {
       transform: translateZ(0px);
