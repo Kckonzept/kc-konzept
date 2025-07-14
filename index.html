@@ -4,96 +4,60 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KcKonzept – 3D Start</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800&display=swap" rel="stylesheet">
-
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
+      height: 100%; width: 100%; overflow: hidden;
       background: #000;
       font-family: 'Poppins', 'Segoe UI', sans-serif;
       perspective: 1000px;
     }
-
     .layer-wrapper {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      transform-style: preserve-3d;
-      transition: transform 0.3s ease;
+      position: relative; width: 100vw; height: 100vh;
+      transform-style: preserve-3d; transition: transform 0.3s ease;
     }
-
     .layer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      position: absolute; top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      display: flex; justify-content: center; align-items: center;
       backface-visibility: hidden;
     }
-
     .layer.bg {
-      z-index: 0;
-      overflow: hidden;
+      z-index: 0; overflow: hidden;
     }
-
     .layer.bg img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      position: absolute; top: 0; left: 0;
+      width: 100vw; height: 100vh;
       object-fit: fill;
     }
-
     .layer.logo {
       transform: translateZ(0px);
-      flex-direction: column;
-      color: #fff;
-      text-align: center;
-      z-index: 1;
+      flex-direction: column; color: #fff;
+      text-align: center; z-index: 1;
+      transition: opacity 0.8s ease-in-out;
     }
-
     .logo-text {
       display: inline-block;
       transition: transform 0.2s ease;
     }
-
     .logo-text span {
       font-family: 'Playfair Display', serif;
       font-size: 3.5rem;
       font-weight: 800;
       color: #ffaa33;
-      text-shadow:
-        0 0 15px #ffaa33,
-        0 0 35px #ff9900,
-        1px 1px 0 #ffffff,
-        -1px -1px 0 #ffffff;
+      text-shadow: 0 0 15px #ffaa33, 0 0 35px #ff9900, 1px 1px 0 #ffffff, -1px -1px 0 #ffffff;
       opacity: 0;
       display: inline-block;
       transition: opacity 0.3s ease-in;
     }
-
     .menu {
       margin-top: 30px;
-      display: flex;
-      gap: 15px;
+      display: flex; gap: 15px;
       transform: scale(0.95);
       opacity: 0;
       transition: opacity 1s ease-in-out;
     }
-
     .menu button {
       font-family: 'Playfair Display', serif;
       font-size: 0.95rem;
@@ -104,13 +68,11 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
-
     .menu button:hover {
       background-color: #fff8dc;
       color: #000;
       box-shadow: 0 0 20px #fff8dcaa;
     }
-
     .line-svg {
       position: absolute;
       top: 15%;
@@ -118,7 +80,6 @@
       transform: translateX(-50%);
       z-index: 2;
     }
-
     path {
       stroke: white;
       stroke-width: 4;
@@ -128,45 +89,28 @@
       stroke-dasharray: 1000;
       stroke-dashoffset: 1000;
     }
-
     .line1 { animation: drawPath 2s forwards ease-in-out; }
     .line2 { animation: drawPath 2s forwards ease-in-out 0.5s; }
     .line3 { animation: drawPath 2s forwards ease-in-out 1s; }
+    @keyframes drawPath { to { stroke-dashoffset: 0; } }
 
-    @keyframes drawPath {
-      to { stroke-dashoffset: 0; }
-    }
-
-    /* Blätteranimation */
     #leaf-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
       pointer-events: none;
       z-index: 3;
     }
-
     .leaf {
       position: absolute;
-      width: 30px;
-      height: 30px;
+      width: 30px; height: 30px;
       background-image: url('images/leaf.png');
       background-size: contain;
       background-repeat: no-repeat;
       animation: fly linear forwards;
     }
-
     @keyframes fly {
-      0% {
-        transform: translate(0, 0) rotate(0deg) scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(var(--s));
-        opacity: 0;
-      }
+      0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
+      100% { transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(var(--s)); opacity: 0; }
     }
   </style>
 </head>
@@ -177,66 +121,53 @@
       <path class="line2" d="M20 190 Q120 10 380 190" />
       <path class="line3" d="M20 180 Q120 0 380 180" />
     </svg>
-
     <div class="layer bg">
       <img src="images/background.jpg" alt="Hintergrundbild" />
     </div>
-
-    <div class="layer logo">
+    <div class="layer logo" id="contentArea">
       <div class="logo-text" id="logoText"></div>
       <div class="menu" id="menuButtons">
-        <button style="border: 2px solid #d580ff; color: #d580ff;">Leistungen</button>
-        <button style="border: 2px solid #ff6666; color: #ff6666;">Kontakt</button>
-        <button style="border: 2px solid #66fff7; color: #66fff7;">Über KcKonzept</button>
+        <button onclick="triggerLeafStorm('inhalt-leistungen')" style="border: 2px solid #d580ff; color: #d580ff;">Leistungen</button>
+        <button onclick="triggerLeafStorm('inhalt-kontakt')" style="border: 2px solid #ff6666; color: #ff6666;">Kontakt</button>
       </div>
     </div>
   </div>
-
   <div id="leaf-container"></div>
-
+  <div id="inhalt-leistungen" style="display:none;">
+    <h2>Leistungen</h2>
+    <p>Hier stehen die Leistungen von KcKonzept.</p>
+  </div>
+  <div id="inhalt-kontakt" style="display:none;">
+    <h2>Kontakt</h2>
+    <p>Hier stehen die Kontaktdaten oder ein Formular.</p>
+  </div>
   <script>
     const logoText = "KcKonzept";
     const container = document.getElementById("logoText");
-
     function revealLetters(text, target, delay = 100) {
       [...text].forEach((char, index) => {
         const span = document.createElement("span");
         span.textContent = char;
         target.appendChild(span);
-        setTimeout(() => {
-          span.style.opacity = 1;
-        }, index * delay);
+        setTimeout(() => { span.style.opacity = 1; }, index * delay);
       });
     }
-
-    setTimeout(() => {
-      revealLetters(logoText, container, 150);
-    }, 1000);
-
-    setTimeout(() => {
-      document.getElementById('menuButtons').style.opacity = 1;
-    }, 3000);
-
+    setTimeout(() => { revealLetters(logoText, container, 150); }, 1000);
+    setTimeout(() => { document.getElementById('menuButtons').style.opacity = 1; }, 3000);
     document.addEventListener("mousemove", e => {
       const logo = document.querySelector(".logo-text");
       const rect = logo.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      const dx = e.clientX - centerX;
-      const dy = e.clientY - centerY;
+      const dx = e.clientX - (rect.left + rect.width / 2);
+      const dy = e.clientY - (rect.top + rect.height / 2);
       const maxAngle = 25;
       const sensitivity = 0.1;
-      const rotateY = Math.max(-maxAngle, Math.min(maxAngle, dx * sensitivity));
-      const rotateX = Math.max(-maxAngle, Math.min(maxAngle, -dy * sensitivity));
-      logo.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+      logo.style.transform = `rotateY(${Math.max(-maxAngle, Math.min(maxAngle, dx * sensitivity))}deg) rotateX(${Math.max(-maxAngle, Math.min(maxAngle, -dy * sensitivity))}deg)`;
     });
 
     const leafContainer = document.getElementById("leaf-container");
-
     function createLeaf() {
       const leaf = document.createElement("div");
       leaf.classList.add("leaf");
-
       const startX = Math.random() * window.innerWidth;
       const startY = -50;
       const endX = (Math.random() - 0.5) * window.innerWidth;
@@ -244,7 +175,6 @@
       const rotate = (Math.random() - 0.5) * 720;
       const scale = 0.5 + Math.random();
       const duration = 6000 + Math.random() * 4000;
-
       leaf.style.left = `${startX}px`;
       leaf.style.top = `${startY}px`;
       leaf.style.setProperty("--x", `${endX}px`);
@@ -252,12 +182,38 @@
       leaf.style.setProperty("--r", `${rotate}deg`);
       leaf.style.setProperty("--s", scale);
       leaf.style.animationDuration = `${duration}ms`;
-
       leafContainer.appendChild(leaf);
       setTimeout(() => leaf.remove(), duration + 100);
     }
+    setInterval(createLeaf, 2000); // weniger Blätter
 
-    setInterval(createLeaf, 500);
+    function triggerLeafStorm(newContentId) {
+      const stormCount = 50;
+      const stormHeight = window.innerHeight / 2;
+      for (let i = 0; i < stormCount; i++) {
+        const leaf = document.createElement("div");
+        leaf.classList.add("leaf");
+        const startY = stormHeight - 100 + Math.random() * 200;
+        const endX = window.innerWidth + 200;
+        const duration = 1000 + Math.random() * 1000;
+        leaf.style.left = `-50px`;
+        leaf.style.top = `${startY}px`;
+        leaf.style.setProperty("--x", `${endX}px`);
+        leaf.style.setProperty("--y", `0px`);
+        leaf.style.setProperty("--r", `${(Math.random() - 0.5) * 360}deg`);
+        leaf.style.setProperty("--s", 0.7 + Math.random() * 0.6);
+        leaf.style.animationDuration = `${duration}ms`;
+        leafContainer.appendChild(leaf);
+        setTimeout(() => leaf.remove(), duration + 100);
+      }
+      const contentArea = document.getElementById("contentArea");
+      contentArea.style.opacity = 0;
+      setTimeout(() => {
+        const newHTML = document.getElementById(newContentId).innerHTML;
+        contentArea.innerHTML = `<div class=\"logo-text\">${newHTML}</div>`;
+        contentArea.style.opacity = 1;
+      }, 1200);
+    }
   </script>
 </body>
 </html>
